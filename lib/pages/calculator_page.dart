@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testflutter/controller/calculator_controller.dart';
+import 'package:testflutter/routes/routes.dart';
 import 'package:testflutter/widgets/widgets_button.dart';
 import 'package:testflutter/widgets/widgets_textField.dart';
 import 'package:get/get.dart';
@@ -49,6 +50,9 @@ class CalculatorPage extends StatelessWidget {
             Obx(() => Text("Hasil "+calculatorController.hasilJumlah.value)),
             CustomButton(text: "Clear", textColor: Colors.green, onPressed: () {
               calculatorController.clear();
+            },),
+            CustomButton(text: "move yo footballplayers", textColor: Colors.green, onPressed: () {
+              Get.offAllNamed(AppRoutes.footballplayers);
             }, )
       
           ],
