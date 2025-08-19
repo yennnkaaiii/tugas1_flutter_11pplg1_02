@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testflutter/login_page.dart';
 import 'package:get/get.dart';
-import 'package:testflutter/pages/calculator_page.dart';
 import 'package:testflutter/routes/pages.dart';
 import 'package:testflutter/routes/routes.dart';
 
@@ -12,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -21,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.Calculator,
+      initialRoute: AppRoutes.login,
       getPages: AppPages.pages,
     );
   }

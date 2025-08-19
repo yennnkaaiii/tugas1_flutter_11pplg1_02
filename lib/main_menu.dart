@@ -105,7 +105,7 @@ class _MainMenuState extends State<MainMenu> {
                       onPressed: () {
                         //jika username dan password adalah admin maka muncul snackbar
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Kurang")),
+                          SnackBar(content: Text("Kali")),
                           );
                 
                          int angka1 = int.tryParse(txtInput1.text) ?? 0;
@@ -128,7 +128,7 @@ class _MainMenuState extends State<MainMenu> {
                       onPressed: () {
                         //jika username dan password adalah admin maka muncul snackbar
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Kurang")),
+                          SnackBar(content: Text("Bagi")),
                           );
                 
                          int angka1 = int.tryParse(txtInput1.text) ?? 0;

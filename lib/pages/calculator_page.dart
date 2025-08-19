@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; 
 import 'package:testflutter/controller/calculator_controller.dart';
 import 'package:testflutter/routes/routes.dart';
 import 'package:testflutter/widgets/widgets_button.dart';
-import 'package:testflutter/widgets/widgets_textField.dart';
 import 'package:get/get.dart';
 
 class CalculatorPage extends StatelessWidget {
@@ -13,48 +13,94 @@ class CalculatorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("My Calculator"),),
+      appBar: AppBar(
+
+        leading: IconButton( 
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.offAllNamed(AppRoutes.login);
+          },
+        ),
+      ),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            MyTextField(textEditingController: calculatorController.txtAngka1, labelText: "input angka 1"),
-            MyTextField(textEditingController: calculatorController.txtAngka2, labelText: "input angka 2"),
+
+            TextField(
+              controller: calculatorController.txtAngka1,
+              decoration: const InputDecoration(
+                labelText: "Input angka 1",
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly], // hanya angka
+            ),
+            const SizedBox(height: 10),
+
+            TextField(
+              controller: calculatorController.txtAngka2,
+              decoration: const InputDecoration(
+                labelText: "Input angka 2",
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly], // hanya angka
+            ),
+
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  CustomButton(text: "+", textColor: Colors.blue, onPressed: () {
-                    calculatorController.tambah();
-                  },),
-                  CustomButton(text: "-", textColor: Colors.blue, onPressed: () {
-                    calculatorController.kurang();
-                  },),
+                  CustomButton(
+                    text: "+",
+                    textColor: Colors.blue,
+                    onPressed: () => calculatorController.tambah(),
+                  ),
+                  CustomButton(
+                    text: "-",
+                    textColor: Colors.blue,
+                    onPressed: () => calculatorController.kurang(),
+                  ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  CustomButton(text: "X", textColor: Colors.blue, onPressed: () {
-                    calculatorController.kali();
-                  },),
-                  CustomButton(text: "/", textColor: Colors.blue, onPressed: () {
-                    calculatorController.bagi();
-                  },),
+                  CustomButton(
+                    text: "X",
+                    textColor: Colors.blue,
+                    onPressed: () => calculatorController.kali(),
+                  ),
+                  CustomButton(
+                    text: "/",
+                    textColor: Colors.blue,
+                    onPressed: () => calculatorController.bagi(),
+                  ),
                 ],
               ),
             ),
-            Obx(() => Text("Hasil "+calculatorController.hasilJumlah.value)),
-            CustomButton(text: "Clear", textColor: Colors.green, onPressed: () {
-              calculatorController.clear();
-            },),
-            CustomButton(text: "move yo footballplayers", textColor: Colors.green, onPressed: () {
-              Get.offAllNamed(AppRoutes.footballplayers);
-            }, )
-      
+
+            Obx(() => Text(
+                  "Hasil: ${calculatorController.hasilJumlah.value}",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+
+            const SizedBox(height: 15),
+
+            CustomButton(
+              text: "Clear",
+              textColor: Colors.green,
+              onPressed: () => calculatorController.clear(),
+            ),
+
+            const SizedBox(height: 10),
           ],
         ),
       ),
